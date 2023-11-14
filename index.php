@@ -46,7 +46,7 @@
                     </div>
                     
                     <div class="text-left mx-9">
-                        <a href="" class="rounded-lg bg-yellow-400 p-1">Register</a>
+                        <a href="" class="rounded-lg bg-yellow-400 p-1">Sign Up</a>
                     </div>
             </div>
         </form>
