@@ -12,11 +12,18 @@
     <?php require("db/Connect.php")?>
 
 </head>
+        <?php 
+            $sql = "SELECT * FROM user";
+            $result =mysqli_query($connecting,$sql);
+            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        ?>
     <body style="font-family: 'Mitr', sans-serif;">
-        <form action="db/checkuer.php" method="post">
-            <div class="grid grid-cols-2 gap-y-6 min-h-full sm:my-40 ">
-                    <div class="my-20 col-span-2">
-                        <p class="text-4xl text-center">BOOM MARKET LOGIN</p>
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+            <div class="grid grid-cols-2 gap-y-4 min-h-full sm:my-40 ">
+
+
+                    <div class="mt-15 mb-20 col-span-2">
+                        <p class="text-4xl text-center">MY MARKET LOGIN</p>
                     </div>
 
                     <div class="mx-auto col-span-2">
@@ -41,13 +48,36 @@
                     <div class="text-left mx-9">
                         <a href="" class="rounded-lg bg-yellow-400 p-1">Register</a>
                     </div>
-                    <div><p>test</p></div>
             </div>
         </form>
-        
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // collect value of input field
+            $U_name = $_POST['Username'];
+            $Password = $_POST['Password'];
+            foreach ($rows as $row):
+                if($U_name == $row["U_username"]){
+
+                    if($Password == $row["U_password"]){
+                        
+                        if($row["Is_admin"] == "1"){
+                            echo "admin logined";
+                            break;
+                        }
+                        else{
+                            echo "not admin logined";
+                            break;
+                        }
+
+                    }
+                }
+            endforeach;
+            }
+        ?>
     </body>
 </html>
 
+<?php mysqli_close($connecting);?>
 <!-- 
 git add .    
 git commit -m "first"
