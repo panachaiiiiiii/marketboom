@@ -19,13 +19,17 @@
         ?>
     <body style="font-family: 'Mitr', sans-serif;">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-            <div class="grid grid-cols-2 gap-y-4 min-h-full sm:my-40 ">
+            <div class="grid grid-cols-2 gap-y-4 min-h-full sm:my-20 ">
 
 
-                    <div class="mt-15 mb-20 col-span-2">
-                        <p class="text-6xl text-center">MY MARKET LOGIN</p>
+                    <div class="mt-2 mb-5 col-span-2">
+                        <p class="text-6xl text-center">Sign UP</p>
                     </div>
 
+                    <div class="mx-auto col-span-2">
+                        <p>Gmail</p>
+                        <input id="Username" name="Username" type="text" autocomplete="email" required class="block  rounded-md border- py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
+                    </div>
                     <div class="mx-auto col-span-2">
                         <p>Username</p>
                         <input id="Username" name="Username" type="text" autocomplete="email" required class="block  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
@@ -33,6 +37,10 @@
 
                     <div class="mx-auto col-span-2">
                         <p>Password</p>
+                        <input id="Password" name="Password" type="Password" autocomplete="email" required class="block  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
+                    </div>
+                    <div class="mx-auto col-span-2">
+                        <p>Repeat Password</p>
                         <input id="Password" name="Password" type="Password" autocomplete="email" required class="block  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
                     </div>
 
@@ -46,7 +54,7 @@
                     </div>
                     
                     <div class="text-left mx-9">
-                        <a href="sign_up.php" class="rounded-lg bg-yellow-400 p-1">Sign Up</a>
+                        <a href="" class="rounded-lg bg-yellow-400 p-1">Sign Up</a>
                     </div>
             </div>
         </form>
