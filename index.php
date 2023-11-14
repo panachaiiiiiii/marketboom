@@ -41,7 +41,7 @@
                     <div class="text-left mx-9">
                         <a href="" class="rounded-lg bg-yellow-400 p-1">Register</a>
                     </div>
-
+                    <div><p>test</p></div>
             </div>
         </form>
         
