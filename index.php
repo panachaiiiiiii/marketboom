@@ -28,12 +28,12 @@
 
                     <div class="mx-auto col-span-2">
                         <p>Username</p>
-                        <input id="Username" name="Username" type="text" autocomplete="email" required class="block p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
+                        <input id="Username" name="Username" type="text" autocomplete="email" required class="block p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
                     </div>
 
                     <div class="mx-auto col-span-2">
                         <p>Password</p>
-                        <input id="Password" name="Password" type="Password" autocomplete="email" required class="block p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
+                        <input id="Password" name="Password" type="Password" autocomplete="email" required class="block p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
                     </div>
 
                     <div class="mx-auto col-span-2">
