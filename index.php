@@ -23,7 +23,7 @@
 
 
                     <div class="mt-15 mb-20 col-span-2">
-                        <p class="text-4xl text-center">MY MARKET LOGIN</p>
+                        <p class="text-6xl text-center">MY MARKET LOGIN</p>
                     </div>
 
                     <div class="mx-auto col-span-2">
