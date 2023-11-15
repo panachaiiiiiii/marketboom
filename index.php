@@ -46,29 +46,27 @@
                     </div>
             </div>
         </form>
-        <?php 
-            
-        ?>
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $sql = "SELECT * FROM user WHERE U_username = ' $_POST[Username] ' ";
-                $result =mysqli_query($connecting,$sql);
+                $UserName = $_POST['Username'];
                 $Password = $_POST['Password'];
+                $sql = "SELECT * FROM user WHERE U_username = '$UserName' ";
+                $result =mysqli_query($connecting,$sql);
+                $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                
+                
                 if(mysqli_num_rows($result) == 0){
                     echo "not found id";
                 }else{
-                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    
                     foreach ($rows as $row):
                             if($Password == $row["U_password"]){
+                                session_start();
+                                    $_SESSION['username']=htmlentities($UserName);
+                                    $_SESSION['Is_admin']=htmlentities($row["Is_admin"]);
+                                    header("Location: Home_page.php");
+                                    break;
                                 
-                                if($row["Is_admin"] == "1"){
-                                    echo "admin logined";
-                                    break;
-                                }
-                                else{
-                                    echo "not admin logined";
-                                    break;
-                                }
 
                             }
                     endforeach;

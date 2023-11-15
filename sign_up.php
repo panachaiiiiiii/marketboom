@@ -48,16 +48,16 @@
         </form>
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $sql = "SELECT * FROM user WHERE U_username = ' $_POST[Username] ' ";
-                $result =mysqli_query($connecting,$sql);
+                $sql = "SELECT * FROM user WHERE U_username = '$_POST[Username]' ";
+                $result = mysqli_query($connecting,$sql);
                 if(mysqli_num_rows($result) == 0){
 
                     $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     if($_POST['Password'] == $_POST['Re_Password']){                     
                         $W_sql = "INSERT INTO user (U_email, U_username, U_password,Is_admin) VALUES ( '$_POST[Email]','$_POST[Username]','$_POST[Password]',0);";
                         mysqli_query($connecting,$W_sql);
-                        header("Location: https://www.google.com/search?q=react+tailwind&rlz=1C1ONGR_enTH1001TH1001&oq=rea&gs_lcrp=EgZjaHJvbWUqCQgCECMYJxiKBTIGCAAQRRg8MgYIARBFGDkyCQgCECMYJxiKBTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYQTIGCAYQRRhBMgYIBxBFGD3SAQg2MjUxajBqN6gCALACAA&sourceid=chrome&ie=UTF-8");
-                        exit();
+                        header("Location: index.php");
+                        
                         
                     }
                     else{
