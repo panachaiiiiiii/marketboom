@@ -12,11 +12,7 @@
     <?php require("db/Connect.php")?>
 
 </head>
-        <?php 
-            $sql = "SELECT * FROM user";
-            $result =mysqli_query($connecting,$sql);
-            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        ?>
+        
     <body style="font-family: 'Mitr', sans-serif;">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
             <div class="grid grid-cols-2 gap-y-4 min-h-full sm:my-40 ">
@@ -50,28 +46,33 @@
                     </div>
             </div>
         </form>
+        <?php 
+            
+        ?>
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // collect value of input field
-            $U_name = $_POST['Username'];
-            $Password = $_POST['Password'];
-            foreach ($rows as $row):
-                if($U_name == $row["U_username"]){
+                $sql = "SELECT * FROM user WHERE U_username = ' $_POST[Username] ' ";
+                $result =mysqli_query($connecting,$sql);
+                $Password = $_POST['Password'];
+                if(mysqli_num_rows($result) == 0){
+                    echo "not found id";
+                }else{
+                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    foreach ($rows as $row):
+                            if($Password == $row["U_password"]){
+                                
+                                if($row["Is_admin"] == "1"){
+                                    echo "admin logined";
+                                    break;
+                                }
+                                else{
+                                    echo "not admin logined";
+                                    break;
+                                }
 
-                    if($Password == $row["U_password"]){
-                        
-                        if($row["Is_admin"] == "1"){
-                            echo "admin logined";
-                            break;
-                        }
-                        else{
-                            echo "not admin logined";
-                            break;
-                        }
-
-                    }
-                }
-            endforeach;
+                            }
+                    endforeach;
+            }
             }
         ?>
     </body>

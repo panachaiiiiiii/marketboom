@@ -12,11 +12,6 @@
     <?php require("db/Connect.php")?>
 
 </head>
-        <?php 
-            $sql = "SELECT * FROM user";
-            $result =mysqli_query($connecting,$sql);
-            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        ?>
     <body style="font-family: 'Mitr', sans-serif;">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
             <div class="grid grid-cols-2 gap-y-4 min-h-full sm:my-20 ">
@@ -27,8 +22,8 @@
                     </div>
 
                     <div class="mx-auto col-span-2">
-                        <p>Gmail</p>
-                        <input id="Username" name="Username" type="text" autocomplete="email" required class="block p-1 rounded-md border- py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
+                        <p>Email</p>
+                        <input id="Email" name="Email" type="Email" autocomplete="email" required class="block p-1 rounded-md border- py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
                     </div>
                     <div class="mx-auto col-span-2">
                         <p>Username</p>
@@ -41,45 +36,36 @@
                     </div>
                     <div class="mx-auto col-span-2">
                         <p>Repeat Password</p>
-                        <input id="Password" name="Password" type="Password" autocomplete="email" required class="block p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
+                        <input id="Re_Password" name="Re_Password" type="Password" autocomplete="email" required class="block p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 m:text-sm sm:leading-6">
                     </div>
 
                     <div class="mx-auto col-span-2">
                         <!-- <a href="" type="submit" class="rounded-lg bg-sky-400 p-2">Login</a> -->
-                        <input type="submit" class="rounded-lg bg-sky-400 p-2" value="Submit">
-                    </div>
-
-                    <div class="text-right">
-                        <p class="">สมัครตรงนี้จ้า -></p>
-                    </div>
-                    
-                    <div class="text-left mx-9">
-                        <a href="" class="rounded-lg bg-yellow-400 p-1">Sign Up</a>
+                        <input type="submit" class="rounded-lg bg-sky-400 p-2 hover:bg-sky-600" value="Sign Up">
                     </div>
             </div>
+            
         </form>
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // collect value of input field
-            $U_name = $_POST['Username'];
-            $Password = $_POST['Password'];
-            foreach ($rows as $row):
-                if($U_name == $row["U_username"]){
+                $sql = "SELECT * FROM user WHERE U_username = ' $_POST[Username] ' ";
+                $result =mysqli_query($connecting,$sql);
+                if(mysqli_num_rows($result) == 0){
 
-                    if($Password == $row["U_password"]){
+                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    if($_POST['Password'] == $_POST['Re_Password']){                     
+                        $W_sql = "INSERT INTO user (U_email, U_username, U_password,Is_admin) VALUES ( '$_POST[Email]','$_POST[Username]','$_POST[Password]',0);";
+                        mysqli_query($connecting,$W_sql);
+                        header("Location: https://www.google.com/search?q=react+tailwind&rlz=1C1ONGR_enTH1001TH1001&oq=rea&gs_lcrp=EgZjaHJvbWUqCQgCECMYJxiKBTIGCAAQRRg8MgYIARBFGDkyCQgCECMYJxiKBTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYQTIGCAYQRRhBMgYIBxBFGD3SAQg2MjUxajBqN6gCALACAA&sourceid=chrome&ie=UTF-8");
+                        exit();
                         
-                        if($row["Is_admin"] == "1"){
-                            echo "admin logined";
-                            break;
-                        }
-                        else{
-                            echo "not admin logined";
-                            break;
-                        }
-
                     }
-                }
-            endforeach;
+                    else{
+                        echo "password not fomath";
+                    }
+                }else{
+                    echo "not use";
+            }
             }
         ?>
     </body>
