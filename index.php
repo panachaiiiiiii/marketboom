@@ -62,8 +62,12 @@
                     foreach ($rows as $row):
                             if($Password == $row["U_password"]){
                                 session_start();
+                                    $_SESSION["ID"] = htmlentities($row["U_id"]);
                                     $_SESSION['username']=htmlentities($UserName);
                                     $_SESSION['Is_admin']=htmlentities($row["Is_admin"]);
+
+                                    $_SESSION['test'] = 0;
+
                                     header("Location: Home_page.php");
                                     break;
                                 
