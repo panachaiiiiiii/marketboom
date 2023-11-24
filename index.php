@@ -9,7 +9,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mitr:wght@300&display=swap');
     </style>
 
-    <?php require("db/Connect.php")?>
+    <?php require("db/Connect.php");
+    session_start();
+    ?>
 
 </head>
         

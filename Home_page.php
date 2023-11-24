@@ -4,14 +4,12 @@
     session_start();
     $name = $_SESSION['username'] ;
     $Is_admin = $_SESSION['Is_admin'] ;
-    if($Is_admin == 0){
-        
-    }
-    elseif($Is_admin == 1){
-        header("Location: admin_page.php");
-    }else{
+    $id_user = $_SESSION['ID'];
+    if(!isset($_SESSION['ID']) && empty($_SESSION['ID'])){
         header("Location: index.php");
     }
+
+    
 ?>
 
 <head>
@@ -29,12 +27,17 @@
 <body class="regal-green-70022" style="font-family: 'Mitr', sans-serif; background-color: #FFF2D4; ">
         <div class="grid grid-cols-2 gap-y-4  p-6" style=" background-color: #3A4D39; ">
             <div class="">
-                <p class="text-3xl sm:text-5xl lg:text-4xl xl:text-6xl " style="color: #ECE3CE;">ADMIN PAGE</p>
+                <p class="text-3xl sm:text-5xl lg:text-4xl xl:text-6xl " style="color: #ECE3CE;">HOME PAGE</p>
             </div>
             <div class="text-right">
-                <button type="submit">
-                    <img src="img/shopping-cart.png" alt="cartpng" width="55"/>
+                <button  >
+                    <a href="LogOut.php"><img src="img/logout.png" alt="logout" width="55"/></a>
                 </button>
+                <button  >
+                    <a href="cart.php"><img src="img/shopping-cart.png" alt="cartpng" width="55"/></a>
+                </button>
+
+                
                 </div>  
         </div>
         <div class="h-5"></div>
@@ -43,16 +46,14 @@
                  $sql = "SELECT * FROM item ";
                  $result =mysqli_query($connecting,$sql);
                  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-            $p = 'img/shopping-cart.png';
-            $pp = 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg';
             ?>
             <?php foreach ($rows as $row):?>
                 <form id="myForm" action="getitem.php" method="POST">
-                    <button value="<?php echo $row["Item_id"] ?>" type="submit" name="d" class="grid-cols-1 grid-rows-5 rounded-lg border-2 border-[#739072]  hover:border-[#3A4D39] background-[#FFF2D4]">
+                    <button value="<?php echo $row["Item_id"] ?>" type="submit" name="ID" class="grid-cols-1 grid-rows-5 rounded-lg border-2 border-[#739072]  hover:border-[#3A4D39] background-[#FFF2D4]">
                         <div class="row-span-3">
-                            <img class="rounded-lg" src=<?php echo $row["Item_img"] ?> alt="">
+                            <img class="rounded-t-lg" src=<?php echo $row["Item_img"] ?> alt="">
                         </div>
-                        <div class="">
+                        <div class="text-m">
                             <?php echo $row["Item_name"] ?>
                         </div>
                         <div class="">
@@ -60,17 +61,7 @@
                         </div>
                     </button>
                 </form>
-                
-
                 <?php   endforeach;?>
-
-            <?php 
-                
-                    echo $_SESSION['test'];
-
-                
-            
-            ?>
             
             
             
